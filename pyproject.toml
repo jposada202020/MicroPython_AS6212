@@ -11,7 +11,7 @@ requires = [
 
 [project]
 name = "micropython-as6212"
-description = "MicroPython Library for the ASM AS612 Temperature Sensor"
+description = "MicroPython Library for the ASM AS6212 Temperature Sensor"
 version = "0.0.0+auto.0"
 readme = "README.rst"
 authors = [

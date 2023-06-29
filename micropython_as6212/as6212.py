@@ -5,7 +5,7 @@
 `as6212`
 ================================================================================
 
-MicroPython Library for the ASM AS612 Temperature Sensor
+MicroPython Library for the ASM AS6212 Temperature Sensor
 
 
 * Author(s): Jose D. Montoya
