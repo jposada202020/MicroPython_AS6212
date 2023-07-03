@@ -111,7 +111,7 @@ class AS6212:
         Sensor operation_mode
         When the sleep mode is activated, this will shut the
         device down immediately and reduces the power consumption
-        to a minimum value.
+        to a minimum value
 
         +-------------------------------+-----------------+
         | Mode                          | Value           |
