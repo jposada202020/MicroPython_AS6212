@@ -82,7 +82,7 @@ class AS6212:
         conversions per time unit.
         Additional readouts of the temperature register between conversions
         are possible but not recommended because the value is changed only
-        after a conversion is finished.
+        after a conversion is finished
 
         +------------------------------+------------------+
         | Mode                         | Value            |
