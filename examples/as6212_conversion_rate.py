@@ -15,8 +15,7 @@ while True:
     for conversion_rate in as6212.conversion_rate_values:
         print("Current Conversion rate setting: ", as6.conversion_rate)
         for _ in range(10):
-            temp = as6.temperature
-            print("Temperature: {:.2f}C".format(temp))
+            print(f"Temperature: {as6.temperature:.2f}°C")
             print()
             time.sleep(0.5)
         as6.conversion_rate = conversion_rate

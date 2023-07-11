@@ -57,11 +57,13 @@ class AS6212:
     .. code-block:: python
 
         i2c = I2C(1, sda=Pin(2), scl=Pin(3))
-        as6212 = as6212.AS6212(i2c)
+        as6 = as6212.AS6212(i2c)
 
     Now you have access to the attributes
 
     .. code-block:: python
+
+        temp = as6.temperature
 
     """
 
@@ -135,4 +137,7 @@ class AS6212:
 
     @property
     def temperature(self) -> float:
+        """
+        Temperature in Celsisus
+        """
         return self._temperature_data / 128.0
