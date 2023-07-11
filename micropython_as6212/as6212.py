@@ -40,8 +40,6 @@ class AS6212:
     :param ~machine.I2C i2c: The I2C bus the AS6212 is connected to.
     :param int address: The I2C device address. Defaults to :const:`0x48`
 
-    :raises RuntimeError: if the sensor is not found
-
     **Quickstart: Importing and using the device**
 
     Here is an example of using the :class:`AS6212` class.
@@ -138,6 +136,6 @@ class AS6212:
     @property
     def temperature(self) -> float:
         """
-        Temperature in Celsisus
+        Temperature in Celsius
         """
         return self._temperature_data / 128.0
