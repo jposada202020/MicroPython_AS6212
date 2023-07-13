@@ -1,8 +1,8 @@
 {
   "urls": [
     [
-      "micropython_as6212/examples/as6212_conversion_rate.py",
-      "github:jposada202020/MicroPython_AS6212/examples/as6212_conversion_rate.py"
+  "version": "1"
+  "version": "1"
     ],
     [
       "micropython_as6212/examples/as6212_simpletest.py",
