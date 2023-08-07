@@ -41,7 +41,7 @@ To install directly using a WIFI capable board
 
 .. code-block:: shell
 
-    mip install github:jposada202020/MicroPython_AS6212
+    mip.install("github:jposada202020/MicroPython_AS6212")
 
 
 Installing Library Examples
@@ -57,7 +57,7 @@ To install directly using a WIFI capable board
 
 .. code-block:: shell
 
-    mip install github:jposada202020/MicroPython_AS6212/examples.json
+    mip.install("github:jposada202020/MicroPython_AS6212/examples.json")
 
 
 Installing from PyPI
