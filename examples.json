@@ -1,8 +1,16 @@
 {
   "urls": [
     [
-  "version": "1"
-  "version": "1"
+      "micropython_as6212/examples/as6212_temp_limits.py",
+      "github:jposada202020/MicroPython_AS6212/examples/as6212_temp_limits.py"
+    ],
+    [
+      "micropython_as6212/examples/as6212_interrupt_mode.py",
+      "github:jposada202020/MicroPython_AS6212/examples/as6212_interrupt_mode.py"
+    ],
+    [
+      "micropython_as6212/examples/as6212_conversion_rate.py",
+      "github:jposada202020/MicroPython_AS6212/examples/as6212_conversion_rate.py"
     ],
     [
       "micropython_as6212/examples/as6212_simpletest.py",
