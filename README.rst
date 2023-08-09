@@ -25,9 +25,6 @@ Introduction
 
 MicroPython Library for the ASM AS612 Temperature Sensor.
 
-Note to self: Could not make the temp threshold to work. keep changing sensor I2C address and
-getting EIO when the temperature came back to the limit
-
 
 Installing with mip
 ====================

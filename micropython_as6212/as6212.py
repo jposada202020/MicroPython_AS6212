@@ -22,6 +22,8 @@ __repo__ = "https://github.com/jposada202020/MicroPython_AS6212.git"
 
 _DATA = const(0x00)
 _CONF = const(0x1)
+_TEMP_HIGH_LIMIT = const(0x2)
+_TEMP_LOW_LIMIT = const(0x3)
 
 RATE_0_25 = const(0b00)
 RATE_1 = const(0b01)
@@ -32,6 +34,10 @@ conversion_rate_values = (RATE_0_25, RATE_1, RATE_4, RATE_8)
 CONTINUOUS = const(0b0)
 SLEEP = const(0b1)
 operation_mode_values = (CONTINUOUS, SLEEP)
+
+COMPARATOR = const(0b0)
+INTERRUPT = const(0b1)
+interrupt_mode_values = (COMPARATOR, INTERRUPT)
 
 
 class AS6212:
@@ -65,10 +71,14 @@ class AS6212:
 
     """
 
+    _alert = CBits(1, _CONF, 5, 2, False)
     _conversion_rate = CBits(2, _CONF, 6, 2, False)
     _operation_mode = CBits(1, _CONF, 8, 2, False)
+    _interrupt_mode = CBits(1, _CONF, 9, 2, False)
 
     _temperature_data = RegisterStruct(_DATA, ">h")
+    _temp_high_limit = RegisterStruct(_TEMP_HIGH_LIMIT, ">h")
+    _temp_low_limit = RegisterStruct(_TEMP_LOW_LIMIT, ">h")
 
     def __init__(self, i2c, address: int = 0x48) -> None:
         self._i2c = i2c
@@ -139,3 +149,55 @@ class AS6212:
         Temperature in Celsius
         """
         return self._temperature_data / 128.0
+
+    @property
+    def temperature_high_limit(self) -> float:
+        """
+        Temperature high limit in Celsius
+        """
+        return self._temp_high_limit / 128.0
+
+    @temperature_high_limit.setter
+    def temperature_high_limit(self, value: float) -> None:
+        self._temp_high_limit = int(value * 128)
+
+    @property
+    def temperature_low_limit(self) -> float:
+        """
+        Temperature low limit in Celsius
+        """
+        return self._temp_low_limit / 128.0
+
+    @temperature_low_limit.setter
+    def temperature_low_limit(self, value: float) -> None:
+        self._temp_low_limit = int(value * 128)
+
+    @property
+    def interrupt_mode(self) -> str:
+        """
+        Sensor interrupt_mode
+
+        +-------------------------------+-----------------+
+        | Mode                          | Value           |
+        +===============================+=================+
+        | :py:const:`as6212.COMPARATOR` | :py:const:`0b0` |
+        +-------------------------------+-----------------+
+        | :py:const:`as6212.INTERRUPT`  | :py:const:`0b1` |
+        +-------------------------------+-----------------+
+        """
+        values = ("COMPARATOR", "INTERRUPT")
+        return values[self._interrupt_mode]
+
+    @interrupt_mode.setter
+    def interrupt_mode(self, value: int) -> None:
+        if value not in interrupt_mode_values:
+            raise ValueError("Value must be a valid interrupt_mode setting")
+        self._interrupt_mode = value
+
+    @property
+    def alert(self) -> bool:
+        """
+        Sensor alert
+        """
+        values = (False, True)
+        return values[self._alert]
