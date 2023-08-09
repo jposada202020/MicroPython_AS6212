@@ -176,6 +176,23 @@ class AS6212:
     def interrupt_mode(self) -> str:
         """
         Sensor interrupt_mode
+        The interrupt mode bit defines whether the device operates in the
+        temperature comparator mode or the interrupt mode.
+        This defines the operation of the ALERT output as described in
+        the polarity section bit.
+
+        The comparator mode is characterized that if the temperature value
+        exceeds the THIGH value, the alert output is changed (e.g. from high
+        to low if the polarity bit is set to 0 and vice versa). The alert
+        output stays in that condition until the measured temperature drops
+        below the defined TLOW value.
+
+        The interrupt mode is characterized that it changes the alert output
+        as soon as the measured temperature crosses the THIGH or TLOW
+        value threshold.
+
+        The alert bit has the same setting as the alert output if the device
+        is set to comparator mode.
 
         +-------------------------------+-----------------+
         | Mode                          | Value           |
@@ -198,6 +215,9 @@ class AS6212:
     def alert(self) -> bool:
         """
         Sensor alert
+        The alert bit can be used to easily compare the current temperature
+        reading to the thresholds that can be set with the :attr:`temperature_low_limit`
+        and :attr:`temperature_high_limit`.
         """
         values = (False, True)
         return values[self._alert]
